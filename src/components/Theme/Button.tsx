@@ -23,7 +23,7 @@ const butTheme: butThemeType = {
     },
 }
 
-const ButtonTheme = ({ children }: { children: React.ReactNode }) => {
-    ;<ThemeProvider theme={butTheme}>{children}</ThemeProvider>
+const ButtonTheme = () => {
+    ;<ThemeProvider theme={butTheme}></ThemeProvider>
 }
 export default ButtonTheme

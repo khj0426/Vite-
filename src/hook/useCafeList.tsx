@@ -11,8 +11,8 @@
 // |
 
 //현위치의 위도 경도를 반환
-import {useState, useEffect} from 'react';
-import type {resultInterface} from '../components/types/Location/Address';
+import { useState, useEffect } from 'react';
+import type { resultInterface } from '../components/types/Location/Address';
 const useCurrentPos = () => {
   const [error, setError] = useState<kakao.maps.services.Status>();
   const [currentLocation, setCurrentLocation] = useState<GeolocationPosition>();
@@ -53,9 +53,9 @@ const useCurrentPos = () => {
   }, [currentLocation && true]);
 
   if (error) {
-    return {error};
+    return { error };
   }
-  return {resultAddress, currentLocation};
+  return { resultAddress, currentLocation };
 };
 
 export default useCurrentPos;
