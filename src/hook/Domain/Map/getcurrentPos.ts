@@ -17,7 +17,7 @@
 
 // 현위치의 위도 경도를 반환
 import { useState, useEffect } from 'react';
-import type { ResultInterface } from '../components/types/Location/Address';
+import type { ResultInterface } from '../../../components/types/Location/Address';
 
 const useCurrentPos = () => {
   const [error, setError] = useState<kakao.maps.services.Status>();

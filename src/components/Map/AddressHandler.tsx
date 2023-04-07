@@ -1,8 +1,9 @@
 import React from 'react';
-import type { AddressHandlerType } from '../components/types/Location/Address';
-import AddressConstants from '../components/constants/AddressConstant';
+import type { AddressHandlerType } from '../types/Location/Address';
+import AddressConstants from '../constants/AddressConstant';
 
-function AddressHandlerError({ resultAddress, error }: AddressHandlerType) {
+// 현재 위치를 알려주는 컴포넌트
+function CurrentAddress({ resultAddress, error }: AddressHandlerType) {
   return (
     <>
       {error === kakao.maps.services.Status.ERROR && (
@@ -19,4 +20,4 @@ function AddressHandlerError({ resultAddress, error }: AddressHandlerType) {
     </>
   );
 }
-export default AddressHandlerError;
+export default CurrentAddress;

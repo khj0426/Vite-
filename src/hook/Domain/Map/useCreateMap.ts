@@ -12,24 +12,21 @@
 // |- The code is not checking if the `pos` or `container`
 // parameters are null or undefined, which could cause errors.
 // |
-// 위치를 받아서 지도 객체를 반환합니다
 
-export type UseCreateMapProps = {
+// 위치를 받아서 카키오 지도 객체를 반환합니다
+
+export type CreateMapProps = {
   pos: GeolocationPosition;
   container: HTMLElement;
 };
 
-export function useCreateMap({ pos, container }: UseCreateMapProps) {
-  if (typeof pos === 'undefined') {
-    return new Error('Can not Create Map');
-  }
-
+export function createMap({ pos, container }: CreateMapProps) {
   const $latitude = pos?.coords?.latitude;
   const $longitude = pos?.coords?.longitude;
 
   const $mapOptions: kakao.maps.MapOptions = {
     center: new kakao.maps.LatLng($latitude, $longitude),
-    level: 5,
+    level: 3,
     draggable: true,
     scrollwheel: true,
     keyboardShortcuts: true,
