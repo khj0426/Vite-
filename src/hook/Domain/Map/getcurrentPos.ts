@@ -26,9 +26,18 @@ const useCurrentPos = () => {
 
   const getLocation = () => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((pos) => {
-        setCurrentLocation(pos);
-      });
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          setCurrentLocation(pos);
+        },
+        (err) => {
+          console.log(err);
+        },
+        {
+          enableHighAccuracy: true,
+          maximumAge: 10000,
+        }
+      );
     }
   };
 
