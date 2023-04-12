@@ -15,6 +15,9 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+        
+      - name: Install types of styled-components
+        run: npm i --save-dev @types/styled-components
 
       - name: Building apps
         run: npm run build
