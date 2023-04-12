@@ -8,4 +8,5 @@ export default defineConfig({
     outDir: 'build', // 빌드 결과물이 생성될 폴더명을 변경
   },
   plugins: [react(), tsconfigPaths()],
+  base: 'https://khj0426.github.io/Vite-React/',
 });
