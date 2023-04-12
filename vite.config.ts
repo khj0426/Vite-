@@ -4,5 +4,8 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  build: {
+    outDir: 'build', // 빌드 결과물이 생성될 폴더명을 변경
+  },
   plugins: [react(), tsconfigPaths()],
 });
