@@ -3,7 +3,6 @@ import Header from './components/Header/Header';
 import AddressHandlerError from './components/Map/AddressHandler';
 import useCurrentPos from './hook/Domain/Map/getcurrentPos';
 import GlobalStyle from './components/style/Globalstyle';
-import CafeListDetail from './components/Map/SearchPlace/CafeSearch';
 import Intro from './components/Main/Intro';
 import Footer from './components/Footer';
 import About from './components/Main/About';
