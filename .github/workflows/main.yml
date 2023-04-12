@@ -13,6 +13,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Cache node modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-npm-
+
       - name: Install dependencies
         run: npm ci
 
@@ -21,21 +28,6 @@ jobs:
 
       - name: Building apps
         run: npm run build
-
-      # 의존성 모듈을 캐싱해주는 플로우
-      - name: Cache node modules
-        uses: actions/cache@v2
-        with:
-          #캐싱할 디렉토리
-          path: node_modules
-
-          # 캐시를 구분하는 키를 지정한다
-          # ${{runner.os}}는 현재 깃헙 액션의 운영체제
-
-          # 현재 빌드 환경의 운영체제와 packagelock.json파일의 변경 사항에 따라 캐시 구분
-          #
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: ${{ runner.os }}-npm-
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
