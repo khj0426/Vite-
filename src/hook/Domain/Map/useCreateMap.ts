@@ -26,7 +26,7 @@ export function createMap({ pos, container }: CreateMapProps) {
 
   const $mapOptions: kakao.maps.MapOptions = {
     center: new kakao.maps.LatLng($latitude, $longitude),
-    level: 3,
+    level: 2,
     draggable: true,
     scrollwheel: true,
     keyboardShortcuts: true,

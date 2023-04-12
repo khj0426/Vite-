@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/comma-dangle */
 import { useEffect, useState, useCallback } from 'react';
 
-function useCafeList(map: kakao.maps.Map | undefined) {
+function useSearchList(map: kakao.maps.Map | undefined) {
   const [res, setRes] = useState<kakao.maps.services.PlacesSearchResult>();
   const [err, setErr] = useState<kakao.maps.services.Status>();
 
-  const getCafeList = useCallback(() => {
+  const getQueryList = useCallback(() => {
     if (!map) return;
     const $placeSearch = new kakao.maps.services.Places(map);
     $placeSearch.categorySearch(
@@ -17,13 +17,16 @@ function useCafeList(map: kakao.maps.Map | undefined) {
           setErr(status);
         }
       },
-      { useMapCenter: true }
+      {
+        useMapCenter: true,
+        page: 3,
+      }
     );
   }, [map]);
 
-  useEffect(getCafeList, [getCafeList]);
+  useEffect(getQueryList, [getQueryList]);
 
   return { res, err };
 }
 
-export default useCafeList;
+export default useSearchList;

@@ -1,43 +1,69 @@
+import React from 'react';
 import styled from 'styled-components';
 import Theme from '../Theme/Common';
 import 'primeicons/primeicons.css';
+
+const Container = styled.header`
+  border: ${(props) => `1px solid ${props?.theme?.colors?.White}`};
+  background-color: ${(props) => `${props.theme.colors.White}`};
+  font-family: ${(props) => `${props.theme.fonts[0]}`};
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  border: none;
+  justify-content: space-between;
+  background-color: #000;
+  color: white;
+`;
 
 function Header() {
   return (
     <Theme>
       <Container>
         <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
-          <i
+          <div
             className="pi pi-desktop"
             style={{
               fontSize: '2.1rem',
               color: 'slateblue',
               display: 'inline',
-              marginLeft: '5px',
             }}
           />
-          <h2 style={{ display: 'inline' }}>NCafe</h2>
+          <div>
+            <h2 style={{ display: 'inline', marginRight: '15px' }}>NearBy</h2>
+          </div>
         </div>
 
-        <SideHeader>모각코하기 좋은 카페를 찾아보세요!</SideHeader>
+        <div
+          className="pi pi-comment"
+          style={{
+            fontSize: '1.2rem',
+            color: 'slateblue',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSe2XZYgjrij4NOELlTmKu56dN51qGBVZgHcMs_I1ByGnpZ5Ag/viewform?usp=sf_link"
+            target="_blank"
+            style={{
+              fontSize: '1rem',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              fontWeight: '500',
+              textDecoration: 'none',
+              color: 'white',
+            }}
+            rel="noreferrer"
+          >
+            의견보내기
+          </a>
+        </div>
       </Container>
     </Theme>
   );
 }
 
-const Container = styled.header`
-    width: 100%;
-    border: ${(props) => `1px solid ${props.theme.colors.White}`};
-    background-color: ${(props) => `${props.theme.colors.White}`};
-    font-family: ${(props) => `${props.theme.fonts[0]}`};
-`;
-
-const SideHeader = styled.div`
-    display: flex;
-    height: 75px;
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-left: 5px;
-    align-items: center;
-`;
 export default Header;

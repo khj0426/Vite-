@@ -1,8 +1,27 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import type { AddressHandlerType } from '../types/Location/Address';
 import AddressConstants from '../constants/AddressConstant';
+import { Button } from 'primereact/button';
+import styled, { css } from 'styled-components';
 
-// 현재 위치를 알려주는 컴포넌트
+const StyledTitle = styled.h3`
+  font-weight: 700;
+  display: flex;
+  color: white;
+  flex-wrap: wrap;
+`;
+
+const StyledTitleButton = styled.button`
+  width: 25px;
+  height: 25px;
+`;
+
+const StyledCurrentAddress = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+`;
+
 function CurrentAddress({ resultAddress, error }: AddressHandlerType) {
   return (
     <>
@@ -14,10 +33,17 @@ function CurrentAddress({ resultAddress, error }: AddressHandlerType) {
         <div>{AddressConstants.notfoundError}</div>
       )}
 
-      {typeof resultAddress !== 'undefined' ? (
-        <h1>{resultAddress[0].address.address_name}</h1>
-      ) : null}
+      {resultAddress && (
+        <StyledCurrentAddress>
+          <StyledTitle>{`${resultAddress[0]?.address?.address_name}근처의 모든 것을 만나고 싶다면?`}</StyledTitle>
+
+          <Button style={{ fontWeight: 700, width: '170px' }}>
+            지금 만나러 가기
+          </Button>
+        </StyledCurrentAddress>
+      )}
     </>
   );
 }
+
 export default CurrentAddress;

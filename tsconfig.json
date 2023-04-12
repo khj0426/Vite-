@@ -17,6 +17,6 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": [".eslintrc.cjs", "src"],
+  "include": [".eslintrc.cjs", "src", "vite.config.ts"], // vite.config.ts 파일 추가
   "references": [{ "path": "./tsconfig.node.json" }]
 }
