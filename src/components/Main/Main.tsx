@@ -4,8 +4,8 @@ import Intro from './Intro';
 const Main = () => {
   return (
     <>
-      <About />
       <Intro />
+      <About />
     </>
   );
 };

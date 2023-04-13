@@ -6,6 +6,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Search from '../../assets/SearchImage.svg';
 import { StyledIntroTextContainer, StyledMainTItle } from './Intro';
+import useInViewPort from '../../hook/useInViewPort';
 
 const StyledAboutContainer = styled.div`
   display: flex;
@@ -73,31 +74,15 @@ const StyledAboutImage = styled.img`
 
 function About() {
   const element = useRef<HTMLDivElement | null>(null);
-  const [InviewPort, setInviewPort] = useState<boolean>(false);
-
-  useEffect(() => {
-    const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setInviewPort(true);
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(observerCallback, {
-      threshold: 0.5,
-    });
-
-    if (element.current) {
-      observer.observe(element.current);
-    }
-  }, []);
+  const InViewPort = useInViewPort(element, {
+    threshold: 0.5,
+  });
 
   return (
     <div>
       <StyledAboutContainer
         ref={element}
-        className={InviewPort ? 'animation' : ''}
+        className={InViewPort ? 'animation' : ''}
       >
         <StyledAboutImage src={Search} alt="메인 이미지" />
         <StyledIntroTextContainer>
