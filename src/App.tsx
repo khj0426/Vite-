@@ -23,7 +23,7 @@ function App() {
         {typeof currentLocation !== 'undefined' && (
           <Route
             path="/Vite-React/Detail"
-            element={<Detail pos={currentLocation} />}
+            element={<Detail />}
           />
         )}
       </Routes>
