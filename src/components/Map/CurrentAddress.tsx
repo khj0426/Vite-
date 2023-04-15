@@ -23,7 +23,7 @@ function CurrentAddress({ resultAddress }: AddressHandlerType) {
         <StyledCurrentAddress>
           <StyledTitle>{`${resultAddress[0]?.address?.address_name}근처의 모든 것을 만나고 싶다면?`}</StyledTitle>
 
-          <Link to="/Detail">
+          <Link to="/Vite-React/Detail">
             <Button style={{ fontWeight: 700, width: '170px' }}>
               지금 만나러 가기{' '}
             </Button>
