@@ -4,7 +4,8 @@ import { MapWrapperProps } from './components/Map/MapWrapper';
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Header from './components/Header/Header';
-
+import Detail from './pages/Detail';
+import Footer from './components/Footer';
 function App() {
   const { resultAddress, error, currentLocation } = useCurrentPos();
   const MapProps: MapWrapperProps = {
@@ -19,6 +20,12 @@ function App() {
       <Header />
       <Routes>
         <Route path="/Vite-React/" element={<Home props={MapProps} />} />
+        {typeof currentLocation !== 'undefined' && (
+          <Route
+            path="/Vite-React/Detail"
+            element={<Detail pos={currentLocation} />}
+          />
+        )}
       </Routes>
     </div>
   );
