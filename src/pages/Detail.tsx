@@ -29,7 +29,7 @@ const StyledListWrapper = styled.ul`
   justify-content: space-around;
 `;
 
-const Detail = ({ pos }: { pos: GeolocationPosition }) => {
+const Detail = () => {
   const SearchList = useRecoilValue(PlaceSearchAtom);
   return (
     <div>
