@@ -119,7 +119,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-`;function pA({resultAddress:e}){var t,n;return ve(Pf,{children:e&&pt(dA,{children:[ve(fA,{children:`${(n=(t=e[0])==null?void 0:t.address)==null?void 0:n.address_name}근처의 모든 것을 만나고 싶다면?`}),ve(k0,{to:"/Detail",children:pt(Zi,{style:{fontWeight:700,width:"170px"},children:["지금 만나러 가기"," "]})})]})})}const yf={serverError:"서버에서 정보를 불러 올 수 없습니다",notfoundError:"검색 결과가 존재하지 않습니다."};Object.freeze(yf);const $0=(e,t)=>{const[n,r]=y.useState(!1),o=i=>{i.forEach(l=>{l.isIntersecting&&r(l.isIntersecting)})};return y.useEffect(()=>{const i=new IntersectionObserver(o,t);return e.current&&i.observe(e.current),()=>{e.current&&i.unobserve(e.current)}},[e.current,t]),n},hA=Xt.div`
+`;function pA({resultAddress:e}){var t,n;return ve(Pf,{children:e&&pt(dA,{children:[ve(fA,{children:`${(n=(t=e[0])==null?void 0:t.address)==null?void 0:n.address_name}근처의 모든 것을 만나고 싶다면?`}),ve(k0,{to:"/Vite-React/Detail",children:pt(Zi,{style:{fontWeight:700,width:"170px"},children:["지금 만나러 가기"," "]})})]})})}const yf={serverError:"서버에서 정보를 불러 올 수 없습니다",notfoundError:"검색 결과가 존재하지 않습니다."};Object.freeze(yf);const $0=(e,t)=>{const[n,r]=y.useState(!1),o=i=>{i.forEach(l=>{l.isIntersecting&&r(l.isIntersecting)})};return y.useEffect(()=>{const i=new IntersectionObserver(o,t);return e.current&&i.observe(e.current),()=>{e.current&&i.unobserve(e.current)}},[e.current,t]),n},hA=Xt.div`
   justify-content: space-around;
   width: 80%;
   margin: 200px auto;
