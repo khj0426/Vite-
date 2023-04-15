@@ -3,7 +3,7 @@ import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import DetailCard from '../components/Card';
 import SelectCategory from '../components/Select';
-import Map from '../components/Map/Map';
+
 const StyledListWrapper = styled.ul`
   display: flex;
   margin: 0 auto;
@@ -33,7 +33,7 @@ const Detail = ({ pos }: { pos: GeolocationPosition }) => {
   const SearchList = useRecoilValue(PlaceSearchAtom);
   return (
     <div>
-      <SelectCategory pos={pos}></SelectCategory>
+      <SelectCategory />
       <StyledListWrapper>
         {SearchList.map((eachList) => (
           <DetailCard key={eachList.id} list={eachList} />
