@@ -2,7 +2,6 @@ import PlaceSearchAtom from '../components/Atoms/Atoms';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import DetailCard from '../components/Card';
-import SelectCategory from '../components/Select';
 import Map from '../components/Map/Map';
 const StyledListWrapper = styled.ul`
   display: flex;
