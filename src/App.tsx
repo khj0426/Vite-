@@ -1,11 +1,12 @@
 import useCurrentPos from './hook/Domain/Map/getcurrentPos';
 import GlobalStyle from './components/style/Globalstyle';
 import { MapWrapperProps } from './components/Map/MapWrapper';
-import { Routes, Route } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Header from './components/Header/Header';
 import Detail from './pages/Detail';
 import Footer from './components/Footer';
+
 function App() {
   const { resultAddress, error, currentLocation } = useCurrentPos();
   const MapProps: MapWrapperProps = {
@@ -19,14 +20,10 @@ function App() {
       <GlobalStyle />
       <Header />
       <Routes>
-        <Route path="/Vite-React/" element={<Home props={MapProps} />} />
-        {typeof currentLocation !== 'undefined' && (
-          <Route
-            path="/Vite-React/Detail"
-            element={<Detail />}
-          />
-        )}
+        <Route path="/" element={<Home props={MapProps} />} />
+        {currentLocation && <Route path="/Detail" element={<Detail />} />}
       </Routes>
+      <Footer />
     </div>
   );
 }
