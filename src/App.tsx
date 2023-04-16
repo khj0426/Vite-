@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Header from './components/Header/Header';
 import Detail from './pages/Detail';
 import Footer from './components/Footer';
+import Item from './pages/Item';
 
 function App() {
   const { resultAddress, error, currentLocation } = useCurrentPos();
@@ -22,6 +23,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home props={MapProps} />} />
         {currentLocation && <Route path="/Detail" element={<Detail />} />}
+        <Route path="/item" element={<Item />} />
       </Routes>
       <Footer />
     </div>
