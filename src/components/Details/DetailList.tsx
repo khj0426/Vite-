@@ -3,7 +3,6 @@ import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import DetailCard from '../Card';
 import SelectCategory from '../Select';
-import { useNavigate } from 'react-router-dom';
 
 const StyledListWrapper = styled.ul`
   display: flex;
@@ -32,25 +31,14 @@ const StyledListWrapper = styled.ul`
 
 const DetailItemList = () => {
   const SearchList = useRecoilValue(PlaceSearchAtom);
-  const navigate = useNavigate();
-
-  const handleItemClick = (
-    eachList: kakao.maps.services.PlacesSearchResultItem
-  ) => {
-    navigate('/item', {
-      state: {
-        eachList,
-      },
-    });
-  };
   return (
     <div>
       <SelectCategory />
       <StyledListWrapper>
         {SearchList.map((eachList) => (
-          <div onClick={() => handleItemClick(eachList)} key={eachList.id}>
+          <li key={eachList.id}>
             <DetailCard key={eachList.id} list={eachList} />
-          </div>
+          </li>
         ))}
       </StyledListWrapper>
     </div>

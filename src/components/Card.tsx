@@ -2,6 +2,8 @@ import React from 'react';
 import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+
 const CardWrapper = styled.li`
   list-style-type: none;
   display: flex;
@@ -40,12 +42,27 @@ function DetailCard({
 }: {
   list: kakao.maps.services.PlacesSearchResultItem;
 }) {
+  const navigate = useNavigate();
+  const handleItemClick = (
+    eachList: kakao.maps.services.PlacesSearchResultItem
+  ) => {
+    navigate('/item', {
+      state: {
+        eachList,
+      },
+    });
+  };
+
   return (
     <CardWrapper>
       <Card title={list.place_name} subTitle={list.address_name}>
         <p>현재 위치로부터 {list.distance}만큼 떨어져 있어요!</p>
         <div>
-          <Button label="Save" icon="pi pi-check" />
+          <Button
+            label="더 알아보기"
+            icon="pi pi-check"
+            onClick={() => handleItemClick(list)}
+          />
           <Button
             label="Cancel"
             icon="pi pi-times"
