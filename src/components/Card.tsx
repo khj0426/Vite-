@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import useInViewPort from '../hook/useInViewPort';
 
 const CardWrapper = styled.li`
   list-style-type: none;
@@ -13,6 +14,7 @@ const CardWrapper = styled.li`
   align-items: flex-end;
   cursor: pointer;
   margin: 25px;
+  opacity: 0;
   @media ${(props) => props.theme.desktop} {
     width: 350px;
     height: 350px;
@@ -35,6 +37,22 @@ const CardWrapper = styled.li`
     height: 300px;
     margin: 5px;
   }
+  &.animation {
+    animation-name: opacity;
+    animation-duration: 1500ms;
+    animation-fill-mode: forwards;
+
+    @keyframes opacity {
+      from {
+        opacity: 0;
+        transform: translate3d(0, 100%, 50%);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0%, 0%, 0%);
+      }
+    }
+  }
 `;
 
 function DetailCard({
@@ -42,6 +60,10 @@ function DetailCard({
 }: {
   list: kakao.maps.services.PlacesSearchResultItem;
 }) {
+  const cardRef = useRef<HTMLParagraphElement | null>(null);
+  const InViewPort = useInViewPort(cardRef, {
+    threshold: 1,
+  });
   const navigate = useNavigate();
   const handleItemClick = (
     eachList: kakao.maps.services.PlacesSearchResultItem
@@ -54,9 +76,9 @@ function DetailCard({
   };
 
   return (
-    <CardWrapper>
+    <CardWrapper className={InViewPort ? 'animation' : ''}>
       <Card title={list.place_name} subTitle={list.address_name}>
-        <p>현재 위치로부터 {list.distance}만큼 떨어져 있어요!</p>
+        <p ref={cardRef}>현재 위치로부터 {list.distance}만큼 떨어져 있어요!</p>
         <div>
           <Button
             label="더 알아보기"

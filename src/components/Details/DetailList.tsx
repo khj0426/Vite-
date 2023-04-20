@@ -1,8 +1,9 @@
-import PlaceSearchAtom from '../Atoms/Atoms';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import DetailCard from '../Card';
+import { useEffect } from 'react';
 import SelectCategory from '../Select';
+import { searchState } from '../Atoms/Atoms';
 
 const StyledListWrapper = styled.ul`
   display: flex;
@@ -30,14 +31,14 @@ const StyledListWrapper = styled.ul`
 `;
 
 const DetailItemList = () => {
-  const SearchList = useRecoilValue(PlaceSearchAtom);
+  const SearchList = useRecoilValue(searchState);
   return (
     <div>
       <SelectCategory />
       <StyledListWrapper>
         {SearchList.map((eachList) => (
           <li key={eachList.id}>
-            <DetailCard key={eachList.id} list={eachList} />
+            <DetailCard list={eachList} />
           </li>
         ))}
       </StyledListWrapper>

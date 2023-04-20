@@ -18,14 +18,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import useMarker from '../../hook/Domain/Map/Marker/useMarker';
 import { useRecoilState } from 'recoil';
-import PlaceSearchAtom from '../Atoms/Atoms';
+import { searchState } from '../Atoms/Atoms';
 import { createMap } from '../../hook/Domain/Map/useCreateMap';
 import GetCafeList from '../../hook/Domain/SearchCategorie/Cafe/useCateList';
 
 function Map({ pos }: { pos: GeolocationPosition }) {
   const divRef = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<kakao.maps.Map>();
-  const [res, setRes] = useRecoilState(PlaceSearchAtom);
+  const [res, setRes] = useRecoilState(searchState);
   const marker = useMarker(map, pos)?.marker;
 
   useEffect(() => {

@@ -11,12 +11,12 @@
 /* eslint-disable @typescript-eslint/comma-dangle */
 import { useEffect, useState, useCallback } from 'react';
 import { useRecoilState } from 'recoil';
-import PlaceSearchAtom from '../../../../components/Atoms/Atoms';
+import { searchState } from '../../../../components/Atoms/Atoms';
 
 function useSearchList(map: kakao.maps.Map | undefined) {
   const [res, setRes] = useState<kakao.maps.services.PlacesSearchResult>();
   const [err, setErr] = useState<kakao.maps.services.Status>();
-  const [searchRes, setSearchRes] = useRecoilState(PlaceSearchAtom);
+  const [searchRes, setSearchRes] = useRecoilState(searchState);
 
   const getQueryList = useCallback(() => {
     if (!map) return;
@@ -26,7 +26,7 @@ function useSearchList(map: kakao.maps.Map | undefined) {
       (result, status, paganation) => {
         if (status === kakao.maps.services.Status.OK) {
           setSearchRes((prev) => {
-            return [...result, ...prev];
+            return [...prev, ...result];
           });
         } else {
           setErr(status);
