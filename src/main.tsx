@@ -10,10 +10,12 @@ import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import theme from './components/style/Theme';
 import { HashRouter } from 'react-router-dom';
+import ScrollTop from './ScrollTop';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <HashRouter>
+      <ScrollTop />
       <ThemeProvider theme={theme}>
         <RecoilRoot>
           <App />
