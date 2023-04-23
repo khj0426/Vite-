@@ -28,10 +28,6 @@ jobs:
 
       - name: Building apps
         run: npm run build
-        
-      - name: Bundle size diff
-        uses: NejcZdovc/bundle-size-diff@v1.1.0
-
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
