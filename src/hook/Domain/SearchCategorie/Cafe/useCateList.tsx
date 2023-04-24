@@ -12,8 +12,17 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useRecoilState } from 'recoil';
 import { searchState } from '../../../../components/Atoms/Atoms';
+import isValidCategory from '../isValidCategory';
+import type CategoryType from '../../../../components/types/Search/category';
 
-function useSearchList(map: kakao.maps.Map | undefined) {
+function useSearchList(
+  map: kakao.maps.Map | undefined,
+  category: CategoryType
+) {
+  if (!isValidCategory(category)) {
+    return;
+  }
+
   const [res, setRes] = useState<kakao.maps.services.PlacesSearchResult>();
   const [err, setErr] = useState<kakao.maps.services.Status>();
   const [searchRes, setSearchRes] = useRecoilState(searchState);
@@ -22,11 +31,15 @@ function useSearchList(map: kakao.maps.Map | undefined) {
     if (!map) return;
     const $placeSearch = new kakao.maps.services.Places(map);
     $placeSearch.categorySearch(
-      'CE7',
+      category,
       (result, status, paganation) => {
         if (status === kakao.maps.services.Status.OK) {
           setSearchRes((prev) => {
-            return [...prev, ...result];
+            const filterByCategory = prev.filter(
+              (element) =>
+                element.category_group_code === result[0].category_group_code
+            );
+            return [...filterByCategory, ...result];
           });
         } else {
           setErr(status);
@@ -41,7 +54,7 @@ function useSearchList(map: kakao.maps.Map | undefined) {
         sort: kakao.maps.services.SortBy.DISTANCE,
       }
     );
-  }, [map]);
+  }, [map, category]);
 
   useEffect(getQueryList, [getQueryList]);
 

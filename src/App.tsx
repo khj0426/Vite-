@@ -7,7 +7,7 @@ import Header from './components/Header/Header';
 import Detail from './pages/Detail';
 import Footer from './components/Footer';
 import Item from './pages/Item';
-
+import { RecoilRoot } from 'recoil';
 function App() {
   const { resultAddress, error, currentLocation } = useCurrentPos();
   const MapProps: MapWrapperProps = {
@@ -17,16 +17,20 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <GlobalStyle />
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home props={MapProps} />} />
-        {currentLocation && <Route path="/Detail" element={<Detail />} />}
-        <Route path="/item" element={<Item />} />
-      </Routes>
-      <Footer />
-    </div>
+    <RecoilRoot>
+      <div className="App">
+        <GlobalStyle />
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home props={MapProps} />} />
+          {currentLocation && (
+            <Route path="/Detail" element={<Detail props={MapProps} />} />
+          )}
+          <Route path="/item" element={<Item />} />
+        </Routes>
+        <Footer />
+      </div>
+    </RecoilRoot>
   );
 }
 

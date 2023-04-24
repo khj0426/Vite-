@@ -17,16 +17,19 @@
 // |
 import React, { useState, useEffect, useRef } from 'react';
 import useMarker from '../../hook/Domain/Map/Marker/useMarker';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { searchState } from '../Atoms/Atoms';
 import { createMap } from '../../hook/Domain/Map/useCreateMap';
 import GetCafeList from '../../hook/Domain/SearchCategorie/Cafe/useCateList';
+import { categoryState } from '../Atoms/Atoms';
+import { mapAtom } from '../Atoms/Atoms';
 
 function Map({ pos }: { pos: GeolocationPosition }) {
   const divRef = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<kakao.maps.Map>();
   const [res, setRes] = useRecoilState(searchState);
   const marker = useMarker(map, pos)?.marker;
+  const category = useRecoilValue(categoryState);
 
   useEffect(() => {
     if (divRef.current) {
@@ -35,12 +38,13 @@ function Map({ pos }: { pos: GeolocationPosition }) {
     }
   }, [pos]);
 
-  const data = GetCafeList(map);
+  const data = GetCafeList(map, category);
+
   useEffect(() => {
-    if (typeof data.res !== 'undefined') {
+    if (data && data.res) {
       setRes(data.res);
     }
-  }, [data.res, setRes]);
+  }, [data, category]);
 
   return (
     <div

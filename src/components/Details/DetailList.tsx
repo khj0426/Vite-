@@ -32,14 +32,16 @@ const StyledListWrapper = styled.ul`
 
 const DetailItemList = () => {
   const SearchList = useRecoilValue(searchState);
+  console.log(SearchList);
   return (
     <div>
       <SelectCategory />
       <StyledListWrapper>
         {SearchList.map((eachList) => (
-          <li key={eachList.id}>
+          <div key={eachList.id}>
+            <li key={eachList.id} />
             <DetailCard list={eachList} />
-          </li>
+          </div>
         ))}
       </StyledListWrapper>
     </div>
