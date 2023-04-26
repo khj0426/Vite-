@@ -3,9 +3,9 @@ import GlobalStyle from './components/style/Globalstyle';
 import { MapWrapperProps } from './components/Map/MapWrapper';
 import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
-import Header from './components/Header/Header';
+import Header from './components/Common/Header/Header';
 import Detail from './pages/Detail';
-import Footer from './components/Footer';
+import Footer from './components/Common/Footer';
 import Item from './pages/Item';
 import { RecoilRoot } from 'recoil';
 function App() {

@@ -15,7 +15,7 @@ import { searchState } from '../../../../components/Atoms/Atoms';
 import isValidCategory from '../isValidCategory';
 import type CategoryType from '../../../../components/types/Search/category';
 
-function useSearchList(
+function usePlaceSearch(
   map: kakao.maps.Map | undefined,
   category: CategoryType
 ) {
@@ -61,4 +61,4 @@ function useSearchList(
   return { res, err };
 }
 
-export default useSearchList;
+export default usePlaceSearch;

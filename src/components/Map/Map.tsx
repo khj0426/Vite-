@@ -20,7 +20,7 @@ import useMarker from '../../hook/Domain/Map/Marker/useMarker';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { searchState } from '../Atoms/Atoms';
 import { createMap } from '../../hook/Domain/Map/useCreateMap';
-import GetCafeList from '../../hook/Domain/SearchCategorie/Cafe/useCateList';
+import GetCafeList from '../../hook/Domain/SearchCategorie/Cafe/usePlaceSearch';
 import { categoryState } from '../Atoms/Atoms';
 import { mapAtom } from '../Atoms/Atoms';
 

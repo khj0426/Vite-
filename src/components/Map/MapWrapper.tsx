@@ -1,5 +1,5 @@
 import Map from './Map';
-import CurrentAddress from './CurrentAddress';
+import CurrentAddress from './LocationIndicator';
 import type { AddressHandlerType } from '../types/Location/Address';
 import AddressConstants from '../constants/AddressConstant';
 import styled from 'styled-components';
@@ -22,7 +22,7 @@ const StyledMapWrapper = styled.div`
   flex-wrap: wrap;
   &.animation {
     animation-name: opacity;
-    animation-duration: 2500ms;
+    animation-duration: 1500ms;
     animation-fill-mode: forwards;
 
     @keyframes opacity {

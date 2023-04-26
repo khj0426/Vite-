@@ -1,7 +1,6 @@
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import DetailCard from '../Card';
-import { useEffect } from 'react';
 import SelectCategory from '../Select';
 import { searchState } from '../Atoms/Atoms';
 
@@ -30,9 +29,8 @@ const StyledListWrapper = styled.ul`
   justify-content: space-around;
 `;
 
-const DetailItemList = () => {
+const PlaceItemList = () => {
   const SearchList = useRecoilValue(searchState);
-  console.log(SearchList);
   return (
     <div>
       <SelectCategory />
@@ -48,4 +46,4 @@ const DetailItemList = () => {
   );
 };
 
-export default DetailItemList;
+export default PlaceItemList;

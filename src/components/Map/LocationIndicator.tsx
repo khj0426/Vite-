@@ -21,7 +21,7 @@ const StyledCurrentAddress = styled.div`
   width: 100%;
 `;
 
-function CurrentAddress({ resultAddress }: AddressHandlerType) {
+function LocationIndicator({ resultAddress }: AddressHandlerType) {
   return (
     <>
       {resultAddress && (
@@ -40,4 +40,4 @@ function CurrentAddress({ resultAddress }: AddressHandlerType) {
   );
 }
 
-export default CurrentAddress;
+export default LocationIndicator;

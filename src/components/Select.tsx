@@ -11,14 +11,6 @@ const SelectCategory = () => {
     setCategory(() => e.target.value);
   };
 
-  const handleButtonClick = () => {
-    if (category) {
-      // 선택한 카테고리에 대한 처리 로직
-    } else {
-      console.log('카테고리를 선택해주세요.');
-    }
-  };
-
   return (
     <>
       <Dropdown
@@ -33,7 +25,6 @@ const SelectCategory = () => {
           marginTop: '16px',
         }}
       />
-      <Button onClick={handleButtonClick} label="선택하기" />
     </>
   );
 };
