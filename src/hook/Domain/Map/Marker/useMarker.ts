@@ -1,4 +1,4 @@
-import Marker from '../../../../assets/marker.gif';
+import Marker from '../../../../assets/marker.webp';
 
 const useMarker = (
   map: kakao.maps.Map | undefined,
