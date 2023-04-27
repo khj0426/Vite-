@@ -9,4 +9,9 @@ export default defineConfig({
   },
   plugins: [react(), tsconfigPaths()],
   base: 'https://khj0426.github.io/Vite-React/',
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: 'src/setupTests.ts',
+  },
 });
