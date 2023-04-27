@@ -1,5 +1,4 @@
 import { Dropdown } from 'primereact/dropdown';
-import { Button } from 'primereact/button';
 import { DropdownChangeEvent } from 'primereact/dropdown';
 import { categoryState } from './Atoms/Atoms';
 import { useRecoilState } from 'recoil';
@@ -22,8 +21,9 @@ const SelectCategory = () => {
         value={category}
         style={{
           width: '200px',
-          marginTop: '16px',
+          position: 'sticky',
         }}
+        filter={true}
       />
     </>
   );

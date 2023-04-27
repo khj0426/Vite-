@@ -1,10 +1,17 @@
 import React from 'react';
 import { atom, selector } from 'recoil';
 import type CategoryType from '../types/Search/category';
+import { recoilPersist } from 'recoil-persist';
+
+const { persistAtom } = recoilPersist({
+  key: 'placeSearchState',
+  storage: sessionStorage,
+});
 
 const PlaceSearchAtom = atom<kakao.maps.services.PlacesSearchResult>({
   key: 'placeSearchState',
   default: [],
+  effects_UNSTABLE: [persistAtom],
 });
 
 const searchState = selector<kakao.maps.services.PlacesSearchResult>({

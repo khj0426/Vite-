@@ -8,7 +8,7 @@ const StyledListWrapper = styled.ul`
   display: flex;
   margin: 0 auto;
   gap: 15px;
-
+  width: 80%;
   @media ${(props) => props.theme.desktop} {
     width: 1000px;
   }
@@ -23,10 +23,10 @@ const StyledListWrapper = styled.ul`
   @media ${(props) => props.theme.mobile} {
     width: 100%;
   }
-  margin: 50px auto;
+  margin: 0px auto;
   align-items: flex-end;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
 `;
 
 const PlaceItemList = () => {

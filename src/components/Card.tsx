@@ -18,24 +18,20 @@ const CardWrapper = styled.li`
   @media ${(props) => props.theme.desktop} {
     width: 350px;
     height: 350px;
-    margin: 20px;
   }
   @media ${(props) => props.theme.laptop} {
     width: 300px;
     height: 300px;
-    margin: 25px;
   }
 
   @media ${(props) => props.theme.tablet} {
     width: 300px;
     height: 300px;
-    margin: 20px;
   }
 
   @media ${(props) => props.theme.mobile} {
-    width: 300px;
+    width: 250px;
     height: 300px;
-    margin: 5px;
   }
   &.animation {
     animation-name: opacity;
@@ -78,7 +74,7 @@ function DetailCard({
   return (
     <CardWrapper className={InViewPort ? 'animation' : ''}>
       <Card title={list.place_name} subTitle={list.address_name}>
-        <p ref={cardRef}>현재 위치로부터 {list.distance}만큼 떨어져 있어요!</p>
+        <p ref={cardRef}>현재 위치로부터 {list.distance}m만큼 떨어져 있어요!</p>
         <div>
           <Button
             label="더 알아보기"

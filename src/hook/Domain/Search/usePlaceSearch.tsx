@@ -10,10 +10,8 @@
 // |
 /* eslint-disable @typescript-eslint/comma-dangle */
 import { useEffect, useState, useCallback } from 'react';
-import { useRecoilState } from 'recoil';
-import { searchState } from '../../../../components/Atoms/Atoms';
-import isValidCategory from '../isValidCategory';
-import type CategoryType from '../../../../components/types/Search/category';
+import isValidCategory from './isValidCategory';
+import type CategoryType from '../../../components/types/Search/category';
 
 function usePlaceSearch(
   map: kakao.maps.Map | undefined,
@@ -23,10 +21,8 @@ function usePlaceSearch(
     return;
   }
 
-  const [res, setRes] = useState<kakao.maps.services.PlacesSearchResult>();
+  const [res, setRes] = useState<kakao.maps.services.PlacesSearchResult>([]);
   const [err, setErr] = useState<kakao.maps.services.Status>();
-  const [searchRes, setSearchRes] = useRecoilState(searchState);
-
   const getQueryList = useCallback(() => {
     if (!map) return;
     const $placeSearch = new kakao.maps.services.Places(map);
@@ -34,7 +30,7 @@ function usePlaceSearch(
       category,
       (result, status, paganation) => {
         if (status === kakao.maps.services.Status.OK) {
-          setSearchRes((prev) => {
+          setRes((prev) => {
             const filterByCategory = prev.filter(
               (element) =>
                 element.category_group_code === result[0].category_group_code

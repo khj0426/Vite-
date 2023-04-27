@@ -1,28 +1,21 @@
 import Map from './Map';
-import CurrentAddress from './LocationIndicator';
 import type { AddressHandlerType } from '../types/Location/Address';
 import AddressConstants from '../constants/AddressConstant';
 import styled from 'styled-components';
 import useInViewPort from '../../hook/useInViewPort';
-import { useRef, useEffect } from 'react';
-import type CategoryType from '../types/Search/category';
-import { useRecoilValue } from 'recoil';
-import { categoryState } from '../Atoms/Atoms';
+import { useRef } from 'react';
 
 export type MapWrapperProps = AddressHandlerType & {
   pos: GeolocationPosition | undefined;
 };
 
 const StyledMapWrapper = styled.div`
-  justify-content: space-around;
-  width: 80%;
-  margin: 200px auto;
-  display: flex;
+  margin: 15px auto;
   opacity: 0;
   flex-wrap: wrap;
   &.animation {
     animation-name: opacity;
-    animation-duration: 1500ms;
+    animation-duration: 2500ms;
     animation-fill-mode: forwards;
 
     @keyframes opacity {
@@ -40,9 +33,8 @@ const StyledMapWrapper = styled.div`
 
 const MapWrapper = ({ props }: { props: MapWrapperProps }) => {
   const mapRef = useRef<HTMLDivElement | null>(null);
-  const category = useRecoilValue(categoryState);
   const InViewPort = useInViewPort(mapRef, {
-    threshold: 1,
+    threshold: 0.5,
   });
 
   if (props.error === kakao.maps.services.Status.ERROR) {
