@@ -35,7 +35,7 @@ function usePlaceSearch(
               (element) =>
                 element.category_group_code === result[0].category_group_code
             );
-            return [...filterByCategory, ...result];
+            return [ ...result,...filterByCategory];
           });
         } else {
           setErr(status);
