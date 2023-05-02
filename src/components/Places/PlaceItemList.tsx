@@ -1,7 +1,6 @@
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import DetailCard from '../Card';
-import SelectCategory from '../Select';
 import { searchState } from '../Atoms/Atoms';
 
 const StyledListWrapper = styled.ul`
@@ -29,12 +28,39 @@ const StyledListWrapper = styled.ul`
   justify-content: center;
 `;
 
+const StyledhasNoItem = styled.div`
+  width: 100%;
+  height: 100px;
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+  color: 'white';
+  font-size: 20px;
+`;
+
 const PlaceItemList = () => {
   const SearchList = useRecoilValue(searchState);
   return (
     <div>
-      <SelectCategory />
       <StyledListWrapper>
+        {SearchList.length === 0 && (
+          <StyledhasNoItem>
+            <i
+              className="pi 
+          pi-exclamation-circle"
+              style={{ fontSize: '20px', color: 'slateblue' }}
+            />
+            <span
+              style={{
+                color: '#fff',
+              }}
+            >
+              장소를 검색하거나 카테고리를 선택해주세요
+            </span>
+          </StyledhasNoItem>
+        )}
         {SearchList.map((eachList) => (
           <div key={eachList.id}>
             <li key={eachList.id} />

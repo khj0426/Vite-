@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from 'react';
 
 function useQuerySearch({ query }: { query: string }) {
-  const [searchState, setSearchState] =
+  const [querySearchState, setQuerySearchState] =
     useState<kakao.maps.services.PlacesSearchResult>([]);
   const [error, setError] = useState<kakao.maps.services.Status>(
     kakao.maps.services.Status.OK
@@ -11,7 +11,7 @@ function useQuerySearch({ query }: { query: string }) {
     const place = new kakao.maps.services.Places();
     place.keywordSearch(query, (result, status) => {
       if (status === kakao.maps.services.Status.OK) {
-        setSearchState(result);
+        setQuerySearchState(result);
       } else {
         setError(status);
       }
@@ -22,7 +22,7 @@ function useQuerySearch({ query }: { query: string }) {
     querySearch();
   }, [querySearch]);
 
-  return { searchState, error };
+  return { querySearchState, error };
 }
 
 export default useQuerySearch;

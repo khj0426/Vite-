@@ -20,8 +20,9 @@ import useMarker from '../../hook/Domain/Map/Marker/useMarker';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { searchState } from '../Atoms/Atoms';
 import { createMap } from '../../hook/Domain/Map/useCreateMap';
-import GetCafeList from '../../hook/Domain/Search/usePlaceSearch';
+import useCategorySearch from '../../hook/Domain/Search/usePlaceSearch';
 import { categoryState } from '../Atoms/Atoms';
+import { memo } from 'react';
 
 function Map({ pos }: { pos: GeolocationPosition }) {
   const divRef = useRef<HTMLDivElement>(null);
@@ -37,13 +38,13 @@ function Map({ pos }: { pos: GeolocationPosition }) {
     }
   }, []);
 
-  const data = GetCafeList(map, category);
+  const data = useCategorySearch(map, category);
 
   useEffect(() => {
     if (data && data.res) {
       setRes(data.res);
     }
-  }, [data]);
+  }, [category]);
 
   return (
     <div
@@ -58,4 +59,4 @@ function Map({ pos }: { pos: GeolocationPosition }) {
   );
 }
 
-export default Map;
+export default memo(Map);

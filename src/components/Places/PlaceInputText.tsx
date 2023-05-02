@@ -4,8 +4,11 @@ import { Button } from 'primereact/button';
 import useDebounce from '../../hook/useDebounce';
 import useQuerySearch from '../../hook/Domain/Search/useQuerySearch';
 import { Messages } from 'primereact/messages';
+import { useRecoilState } from 'recoil';
+import { searchState } from '../Atoms/Atoms';
 
 function PlaceInputText() {
+  const [placeState, setPlaceState] = useRecoilState(searchState);
   const [value, setValue] = useState('');
   const Value = useDebounce(value, 1000);
   const errorMessageRef = useRef<Messages | null>(null);
@@ -19,8 +22,7 @@ function PlaceInputText() {
     placeholder: '장소를 검색하세요',
   };
 
-  const { searchState, error } = useQuerySearch({ query: Value });
-
+  const { querySearchState, error } = useQuerySearch({ query: Value });
   useEffect(() => {
     if (errorMessageRef && errorMessageRef.current) {
       errorMessageRef.current.show({
@@ -30,6 +32,12 @@ function PlaceInputText() {
       });
     }
   }, []);
+
+  useEffect(() => {
+    if (querySearchState.length > 0) {
+      setPlaceState(() => querySearchState);
+    }
+  }, [querySearchState]);
 
   return (
     <div>

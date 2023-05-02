@@ -58,7 +58,7 @@ function DetailCard({
 }) {
   const cardRef = useRef<HTMLParagraphElement | null>(null);
   const InViewPort = useInViewPort(cardRef, {
-    threshold: 1,
+    threshold: 0.5,
   });
   const navigate = useNavigate();
   const handleItemClick = (
