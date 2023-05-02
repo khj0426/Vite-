@@ -7,6 +7,10 @@ const GlobalStyle = createGlobalStyle`
         box-sizing:border-box;
         background-color: #000;
         height: auto;
+        
+    }
+    *{
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     }
 
     a{
