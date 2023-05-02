@@ -1,6 +1,5 @@
 import type CategoryType from '../types/Search/category';
 const categories = [
-  { label: '', value: '' },
   { label: '대형마트', value: 'MT1' },
   { label: '편의점', value: 'CS2' },
   { label: '어린이집, 유치원', value: 'PS3' },
@@ -24,7 +23,6 @@ const categories = [
 const validCategories = new Map<CategoryType, string>([
   ['MT1', '대형마트'],
   ['CS2', '편의점'],
-  ['', ''],
   ['PS3', '어린이집, 유치원'],
   ['SC4', '학교'],
   ['AC5', '학원'],

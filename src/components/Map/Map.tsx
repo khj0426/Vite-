@@ -28,7 +28,6 @@ function Map({ pos }: { pos: GeolocationPosition }) {
   const divRef = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<kakao.maps.Map>();
   const [res, setRes] = useRecoilState(searchState);
-  const marker = useMarker(map, pos)?.marker;
   const category = useRecoilValue(categoryState);
 
   useEffect(() => {
@@ -42,9 +41,9 @@ function Map({ pos }: { pos: GeolocationPosition }) {
 
   useEffect(() => {
     if (data && data.res) {
-      setRes(data.res);
+      setRes(() => data.res);
     }
-  }, [category]);
+  }, [category, data?.res]);
 
   return (
     <div

@@ -10,10 +10,14 @@ import { searchState } from '../Atoms/Atoms';
 function PlaceInputText() {
   const [placeState, setPlaceState] = useRecoilState(searchState);
   const [value, setValue] = useState('');
-  const Value = useDebounce(value, 1000);
+  const Value = useDebounce(value, 250);
   const errorMessageRef = useRef<Messages | null>(null);
   const handleChange = ({ value }: { value: string }) => {
     setValue(value);
+  };
+
+  const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setPlaceState(querySearchState);
   };
 
   const inputProps: TextInputProps = {
@@ -33,16 +37,10 @@ function PlaceInputText() {
     }
   }, []);
 
-  useEffect(() => {
-    if (querySearchState.length > 0) {
-      setPlaceState(() => querySearchState);
-    }
-  }, [querySearchState]);
-
   return (
     <div>
       <TextInput {...inputProps} />
-      <Button label="검색하기" />
+      <Button label="검색하기" onClick={handleButtonClick} />
       {error === kakao.maps.services.Status.ZERO_RESULT && (
         <Messages
           ref={errorMessageRef}

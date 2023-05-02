@@ -31,11 +31,11 @@ function usePlaceSearch(
       (result, status, paganation) => {
         if (status === kakao.maps.services.Status.OK) {
           setRes((prev) => {
-            const filterByCategory = prev.filter(
-              (element) =>
-                element.category_group_code === result[0].category_group_code
+            const filterCategory = prev.filter(
+              (prevResult) =>
+                prevResult.category_group_code === result[0].category_group_code
             );
-            return [...result, ...filterByCategory];
+            return [...result, ...filterCategory];
           });
         } else {
           setErr(status);
@@ -46,7 +46,7 @@ function usePlaceSearch(
       },
       {
         useMapCenter: true,
-        page: 3,
+        page: 5,
         sort: kakao.maps.services.SortBy.DISTANCE,
       }
     );
