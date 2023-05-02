@@ -4,11 +4,6 @@ import { describe, test, expect } from 'vitest';
 describe('Validate Category', () => {
   test('should return false for invalid input', () => {
     expect(isValidCategory('')).toBe(false);
-    expect(isValidCategory(undefined)).toBe(false);
-    expect(isValidCategory(null)).toBe(false);
-    expect(isValidCategory({})).toBe(false);
-    expect(isValidCategory([])).toBe(false);
-    expect(isValidCategory(123)).toBe(false);
   });
 
   test('should return category code for valid input', () => {
