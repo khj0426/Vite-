@@ -41,7 +41,7 @@ function Map({ pos }: { pos: GeolocationPosition }) {
 
   useEffect(() => {
     if (data && data.res) {
-      setRes(() => data.res);
+      setRes(data.res);
     }
   }, [category, data?.res]);
 

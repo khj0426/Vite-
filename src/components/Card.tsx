@@ -5,6 +5,14 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import useInViewPort from '../hook/useInViewPort';
 
+const CardAnchor = styled.a`
+  color: black;
+  text-decoration: none;
+  &:hover {
+    font-weight: 600;
+  }
+`;
+
 const CardWrapper = styled.li`
   list-style-type: none;
   display: flex;
@@ -58,7 +66,7 @@ function DetailCard({
 }) {
   const cardRef = useRef<HTMLParagraphElement | null>(null);
   const InViewPort = useInViewPort(cardRef, {
-    threshold: 0.5,
+    threshold: 0.3,
   });
   const navigate = useNavigate();
   const handleItemClick = (
@@ -75,7 +83,10 @@ function DetailCard({
     <CardWrapper className={InViewPort ? 'animation' : ''}>
       <Card title={list.place_name} subTitle={list.address_name}>
         <p ref={cardRef}>현재 위치로부터 {list.distance}m만큼 떨어져 있어요!</p>
-        <div>
+        <CardAnchor href={list.place_url} target="_blank">
+          장소 바로가기
+        </CardAnchor>
+        <div style={{}}>
           <Button
             label="더 알아보기"
             icon="pi pi-check"

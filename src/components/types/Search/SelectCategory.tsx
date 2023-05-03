@@ -1,8 +1,8 @@
 import { Dropdown } from 'primereact/dropdown';
 import { DropdownChangeEvent } from 'primereact/dropdown';
-import { categoryState } from './Atoms/Atoms';
+import { categoryState } from '../../Atoms/Atoms';
 import { useRecoilState } from 'recoil';
-import { categories } from './constants/CategoryConstant';
+import { categories } from '../../constants/CategoryConstant';
 
 const SelectCategory = () => {
   const [category, setCategory] = useRecoilState(categoryState);
@@ -20,6 +20,7 @@ const SelectCategory = () => {
         placeholder="카테고리 선택"
         value={category}
         style={{
+          marginBottom: '5px',
           width: '200px',
           position: 'sticky',
         }}

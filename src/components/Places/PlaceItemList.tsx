@@ -42,6 +42,7 @@ const StyledhasNoItem = styled.div`
 
 const PlaceItemList = () => {
   const SearchList = useRecoilValue(searchState);
+
   return (
     <div>
       <StyledListWrapper>
