@@ -16,7 +16,7 @@ const CardAnchor = styled.a`
 const CardWrapper = styled.li`
   list-style-type: none;
   display: flex;
-  width: 300px;
+  height: auto;
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-end;
@@ -25,21 +25,17 @@ const CardWrapper = styled.li`
   opacity: 0;
   @media ${(props) => props.theme.desktop} {
     width: 350px;
-    height: 350px;
   }
   @media ${(props) => props.theme.laptop} {
     width: 300px;
-    height: 300px;
   }
 
   @media ${(props) => props.theme.tablet} {
     width: 300px;
-    height: 300px;
   }
 
   @media ${(props) => props.theme.mobile} {
     width: 250px;
-    height: 300px;
   }
   &.animation {
     animation-name: opacity;
@@ -81,7 +77,14 @@ function DetailCard({
 
   return (
     <CardWrapper className={InViewPort ? 'animation' : ''}>
-      <Card title={list.place_name} subTitle={list.address_name}>
+      <Card
+        title={list.place_name}
+        subTitle={list.address_name}
+        style={{
+          margin: '0 auto',
+          width: '100%',
+        }}
+      >
         <p ref={cardRef}>현재 위치로부터 {list.distance}m만큼 떨어져 있어요!</p>
         <CardAnchor href={list.place_url} target="_blank">
           장소 바로가기

@@ -4,10 +4,9 @@ import DetailCard from '../Card';
 import { searchState } from '../Atoms/Atoms';
 
 const StyledListWrapper = styled.ul`
-  display: flex;
-  margin: 0 auto;
   gap: 15px;
-  width: 80%;
+  display: flex;
+  width: 100%;
   @media ${(props) => props.theme.desktop} {
     width: 1000px;
   }
@@ -44,7 +43,7 @@ const PlaceItemList = () => {
   const SearchList = useRecoilValue(searchState);
 
   return (
-    <div>
+    <main>
       <StyledListWrapper>
         {SearchList.length === 0 && (
           <StyledhasNoItem>
@@ -63,13 +62,13 @@ const PlaceItemList = () => {
           </StyledhasNoItem>
         )}
         {SearchList.map((eachList) => (
-          <div key={eachList.id}>
+          <>
             <li key={eachList.id} />
             <DetailCard list={eachList} />
-          </div>
+          </>
         ))}
       </StyledListWrapper>
-    </div>
+    </main>
   );
 };
 
