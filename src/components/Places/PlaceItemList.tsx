@@ -62,10 +62,7 @@ const PlaceItemList = () => {
           </StyledhasNoItem>
         )}
         {SearchList.map((eachList) => (
-          <>
-            <li key={eachList.id} />
-            <DetailCard list={eachList} />
-          </>
+          <DetailCard list={eachList} key={eachList.id} />
         ))}
       </StyledListWrapper>
     </main>
