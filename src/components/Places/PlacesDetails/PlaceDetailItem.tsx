@@ -28,7 +28,7 @@ const StyledDetailItemTextArea = styled.section`
   @media ${(props) => props.theme.mobile} {
     width: 100%;
   }
-  gap: 5px;
+  gap: 25px;
 `;
 
 const PlaceDetailItem = ({

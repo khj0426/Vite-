@@ -11,9 +11,9 @@ const PlaceMap = ({
   useEffect(() => {
     if (placeMapRef.current) {
       const newPlaceMap = new kakao.maps.StaticMap(placeMapRef.current, {
-        center: new kakao.maps.LatLng(Number(list.x), Number(list.y)),
+        center: new kakao.maps.LatLng(Number(list.y), Number(list.x)),
         marker: false,
-        level: 5,
+        level: 2,
       });
       setPlaceMap(newPlaceMap);
     }

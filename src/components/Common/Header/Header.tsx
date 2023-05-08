@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import Theme from '../../Theme/Common';
 import 'primeicons/primeicons.css';
 import { Link } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import HeaderLoginItem from './LoginItem';
+import HeaderFeedBackItem from './FeedBackItem';
 
 const Container = styled.header`
   border: ${(props) => `1px solid ${props?.theme?.colors?.White}`};
@@ -44,31 +47,11 @@ function Header() {
         </div>
 
         <div
-          className="pi pi-comment"
           style={{
-            fontSize: '1.2rem',
-            color: 'slateblue',
             display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
           }}
         >
-          <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSe2XZYgjrij4NOELlTmKu56dN51qGBVZgHcMs_I1ByGnpZ5Ag/viewform?usp=sf_link"
-            target="_blank"
-            style={{
-              fontSize: '1rem',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              fontWeight: '500',
-              textDecoration: 'none',
-              color: 'white',
-            }}
-            rel="noreferrer"
-          >
-            의견보내기
-          </a>
+          <HeaderFeedBackItem /> <HeaderLoginItem />
         </div>
       </Container>
     </Theme>

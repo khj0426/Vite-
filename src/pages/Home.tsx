@@ -4,7 +4,6 @@ import type { MapWrapperProps } from '../components/Map/MapWrapper';
 import LocationIndicator from '../components/Map/LocationIndicator';
 
 const Home = ({ props }: { props: MapWrapperProps }) => {
-  
   return (
     <div>
       <Main />

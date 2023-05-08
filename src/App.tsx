@@ -7,6 +7,7 @@ import Header from './components/Common/Header/Header';
 import Detail from './pages/Detail';
 import Item from './pages/Item';
 import { RecoilRoot } from 'recoil';
+
 function App() {
   const { resultAddress, error, currentLocation } = useCurrentPos();
   const MapProps: MapWrapperProps = {
