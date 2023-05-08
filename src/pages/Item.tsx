@@ -10,11 +10,12 @@ const Item = () => {
     <>
       <main
         style={{
-          display: 'grid',
-          gridTemplateColumns: '3fr 1fr',
+          display: 'flex',
+          justifyContent: 'space-between',
           gap: '10px',
           width: '70%',
-          margin: '0 auto',
+          margin: '50px auto',
+          flexWrap: 'wrap',
         }}
       >
         <PlaceDetailItem list={eachList} />
