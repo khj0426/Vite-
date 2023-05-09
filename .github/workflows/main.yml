@@ -6,11 +6,13 @@ on:
       - main
 
 env:
-  VITE_API_KEY: `${{ secrets.VITE_API_KEY }}`
-  VITE_AUTH_DOMAIN: `${{ secrets.VITE_AUTH_DOMAIN }}`
-  VITE_MESSAGE_SENDER_ID: `${{ secrets.VITE_MESSAGE_SENDER_ID }}`
-  VITE_PROJECT_ID: `${{ secrets.VITE_PROJECT_ID }}`
-  VITE_STORAGE_BUCKET: `${{ secrets.VITE_STORAGE_BUCKET }}`
+  VITE_API_KEY: "${{ secrets.VITE_API_KEY }}"
+  VITE_AUTH_DOMAIN: "${{ secrets.VITE_AUTH_DOMAIN }}"
+  VITE_MESSAGE_SENDER_ID: "${{ secrets.VITE_MESSAGE_SENDER_ID }}"
+  VITE_PROJECT_ID: "${{ secrets.VITE_PROJECT_ID }}"
+  VITE_STORAGE_BUCKET: "${{ secrets.VITE_STORAGE_BUCKET }}"
+  VITE_APP_ID: "${{ secrets.VITE_APP_ID }}"
+  VITE_MEASUREMENT_ID: "${{ secrets.VITE_MEASUREMENT_ID }}"
 
 jobs:
   deploy:
@@ -41,3 +43,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
+
