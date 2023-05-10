@@ -1,23 +1,15 @@
 import { useRef, useEffect, useState } from 'react';
+import useCreatePlaceMap from '../../../hook/Domain/Map/useCreatePlaceMap';
 
 const PlaceMap = ({
   list,
 }: {
   list: kakao.maps.services.PlacesSearchResultItem;
 }) => {
-  const placeMapRef = useRef<HTMLDivElement | null>(null);
-  const [placeMap, setPlaceMap] = useState<kakao.maps.StaticMap | null>(null);
-
-  useEffect(() => {
-    if (placeMapRef.current) {
-      const newPlaceMap = new kakao.maps.StaticMap(placeMapRef.current, {
-        center: new kakao.maps.LatLng(Number(list.y), Number(list.x)),
-        marker: false,
-        level: 2,
-      });
-      setPlaceMap(newPlaceMap);
-    }
-  }, []);
+  const { placeMapRef } = useCreatePlaceMap({
+    x: Number(list.y),
+    y: Number(list.x),
+  });
 
   return (
     <div
