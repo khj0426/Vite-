@@ -12,6 +12,7 @@ const StyledMapWrapper = styled.div`
   margin: 15px auto;
   opacity: 1;
   flex-wrap: wrap;
+  display: inline-flex;
 `;
 
 const MapWrapper = ({ props }: { props: MapWrapperProps }) => {

@@ -24,6 +24,7 @@ function PlaceInputText() {
     value,
     onChange: handleChange,
     placeholder: '장소를 검색하세요',
+    style: { width: '300px', height: '45px' },
   };
 
   const { querySearchState, error } = useQuerySearch({ query: Value });
@@ -38,9 +39,21 @@ function PlaceInputText() {
   }, []);
 
   return (
-    <div>
+    <div
+      style={{
+        width: '100%',
+        display: 'flex',
+      }}
+    >
       <TextInput {...inputProps} />
-      <Button label="검색하기" onClick={handleButtonClick} />
+      <Button
+        onClick={handleButtonClick}
+        style={{
+          height: '45px',
+        }}
+      >
+        <i className="pi pi-search" style={{ color: '#fff' }}></i>
+      </Button>
       {error === kakao.maps.services.Status.ZERO_RESULT && (
         <Messages
           ref={errorMessageRef}

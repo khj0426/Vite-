@@ -3,7 +3,6 @@ import Theme from '../../Theme/Common';
 import 'primeicons/primeicons.css';
 import { Link } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
-import HeaderLoginItem from './LoginItem';
 import HeaderFeedBackItem from './FeedBackItem';
 
 const Container = styled.header`
@@ -31,7 +30,7 @@ function Header() {
             cursor: 'pointer',
           }}
         >
-          <Link to="/Vite-React">
+          <Link to="/">
             <div
               className="pi pi-desktop"
               style={{
@@ -39,8 +38,9 @@ function Header() {
                 color: 'slateblue',
                 display: 'inline',
               }}
-            />
+            ></div>
           </Link>
+
           <div>
             <h2 style={{ display: 'inline', marginRight: '15px' }}>NearBy</h2>
           </div>
@@ -51,7 +51,7 @@ function Header() {
             display: 'flex',
           }}
         >
-          <HeaderFeedBackItem /> <HeaderLoginItem />
+          <HeaderFeedBackItem />
         </div>
       </Container>
     </Theme>

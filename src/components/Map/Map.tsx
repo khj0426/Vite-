@@ -52,7 +52,7 @@ function Map({ pos }: { pos: GeolocationPosition }) {
         width: '300px',
         height: '300px',
         background: 'inherit',
-        display: 'flex',
+        display: 'inline-flex',
       }}
     />
   );

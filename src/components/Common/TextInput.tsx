@@ -10,6 +10,7 @@ export type Props = {
   onBlur?: () => void;
   value?: string;
   disabled?: boolean;
+  style: React.CSSProperties;
 };
 
 function TextInput({
@@ -18,6 +19,7 @@ function TextInput({
   onChange,
   onBlur,
   onFocus,
+  style,
   value = '',
   disabled,
 }: Props) {
@@ -36,6 +38,7 @@ function TextInput({
       onFocus={onFocus}
       onBlur={onBlur}
       disabled={disabled}
+      style={style}
     />
   );
 }
