@@ -49,8 +49,6 @@ function Map({ pos }: { pos: GeolocationPosition }) {
     <div
       ref={divRef}
       style={{
-        width: '300px',
-        height: '300px',
         background: 'inherit',
         display: 'inline-flex',
       }}
