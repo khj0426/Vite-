@@ -54,7 +54,7 @@ export const StyledMainTItle = styled.h1`
     font-size: 1.2rem;
   }
 `;
-const StyledMainImage = styled.img`
+export const StyledMainImage = styled.img`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

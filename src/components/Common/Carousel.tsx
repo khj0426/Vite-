@@ -15,6 +15,7 @@ export type CarouselProps = {
   numVisible?: number;
   //style주입
   style?: React.CSSProperties;
+  //item을 받아서 jsx로 반환하겠다
   itemTemplate: (url: string) => JSX.Element | JSX.Element[];
 };
 

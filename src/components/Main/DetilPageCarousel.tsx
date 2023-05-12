@@ -1,6 +1,5 @@
 import CommonCarousel from '../Common/Carousel';
 import type { CarouselProps, responsiveOption } from '../Common/Carousel';
-import { StyledMainImage as StyledCarouselImage } from './Intro';
 import styled from 'styled-components';
 
 const DetailPageCarouselImage = styled.img`
@@ -28,6 +27,7 @@ const DetailPageCarouselImage = styled.img`
 `;
 
 const DetailPageCarousel = () => {
+  //props주입
   const DetailPageCarouselProps: CarouselProps = {
     numScroll: 1,
     numVisible: 1,
