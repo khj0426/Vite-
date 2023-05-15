@@ -65,7 +65,7 @@ function DetailCard({
     threshold: 0.3,
   });
   const navigate = useNavigate();
-  const handleItemClick = (
+  const handlePlaceDetailBtnClick = (
     eachList: kakao.maps.services.PlacesSearchResultItem
   ) => {
     navigate('/item', {
@@ -73,6 +73,10 @@ function DetailCard({
         eachList,
       },
     });
+  };
+
+  const handlePlaceAddBtnClick = () => {
+    navigate('/user');
   };
 
   return (
@@ -89,16 +93,24 @@ function DetailCard({
         <CardAnchor href={list.place_url} target="_blank">
           장소 바로가기
         </CardAnchor>
-        <div style={{}}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-around',
+          }}
+        >
           <Button
             label="더 알아보기"
             icon="pi pi-check"
-            onClick={() => handleItemClick(list)}
+            size="small"
+            onClick={() => handlePlaceDetailBtnClick(list)}
           />
           <Button
-            label="Cancel"
-            icon="pi pi-times"
+            label="장소 추가하기"
+            icon="pi pi-heart"
+            size="small"
             className="p-button-outlined p-button-secondary"
+            onClick={() => handlePlaceAddBtnClick()}
           />
         </div>
       </Card>

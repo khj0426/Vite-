@@ -21,7 +21,8 @@ const DetailPageCarouselImage = styled.img`
 
   @media ${(props) => props.theme.mobile} {
     width: 300px;
-    height: 500px;
+    height: 300px;
+    object-fit: contain;
   }
   object-fit: contain;
 `;
@@ -36,7 +37,7 @@ const DetailPageCarousel = () => {
       'https://cdn-mart.baemin.com/inventory-unit/f454861c-e2ae-4dcb-ac02-aea51493a696.jpg?w=1080',
     ],
     itemTemplate: (imgUrl: string) => (
-      <div
+      <section
         style={{
           display: 'flex',
           justifyContent: 'center',
@@ -44,7 +45,7 @@ const DetailPageCarousel = () => {
         }}
       >
         <DetailPageCarouselImage src={imgUrl} alt="캐러셀 이미지" />
-      </div>
+      </section>
     ),
     style: {},
   };

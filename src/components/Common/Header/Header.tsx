@@ -3,7 +3,10 @@ import Theme from '../../Theme/Common';
 import 'primeicons/primeicons.css';
 import { Link } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
-import HeaderFeedBackItem from './FeedBackItem';
+import userState from '../../Atoms/userAtom';
+import LoginModal from '../../Login/LoginModal';
+import { Avatar } from 'primereact/avatar';
+import { Badge } from 'primereact/badge';
 
 const Container = styled.header`
   border: ${(props) => `1px solid ${props?.theme?.colors?.White}`};
@@ -19,6 +22,7 @@ const Container = styled.header`
 `;
 
 function Header() {
+  const user = useRecoilValue(userState);
   return (
     <Theme>
       <Container>
@@ -51,7 +55,18 @@ function Header() {
             display: 'flex',
           }}
         >
-          <HeaderFeedBackItem />
+          {user.isLogin === false && <LoginModal />}
+          {user.isLogin && (
+            <>
+              <Badge value={user.displayName} size="large" />
+              <Avatar
+                image={user.photoURL}
+                imageAlt="유저의 프로필 이미지"
+                size="large"
+                shape="circle"
+              />
+            </>
+          )}
         </div>
       </Container>
     </Theme>

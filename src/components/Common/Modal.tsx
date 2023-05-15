@@ -1,7 +1,7 @@
 import { ReactNode, CSSProperties } from 'react';
 import { Button } from 'primereact/button';
 import { Dialog } from 'primereact/dialog';
-import 'primeicons';
+import 'primeicons/primeicons.css';
 import { useState } from 'react';
 
 export type ModalProps = {
@@ -13,25 +13,39 @@ export type ModalProps = {
   children?: ReactNode;
   //스타일 속성 주입
   style?: CSSProperties;
+
+  //버튼의 label지정
+  label: string;
 };
 
-const CommonModal = ({ title, content, children, style }: ModalProps) => {
+const CommonModal = ({
+  title,
+  content,
+  children,
+  style,
+  label,
+}: ModalProps) => {
   const [modal, setModal] = useState<boolean>(false);
   return (
-    <>
-      <Button
-        label="Show"
-        icon="pi pi-external-link"
-        onClick={() => setModal(true)}
-      />
+    <aside
+      style={{
+        opacity: 1,
+      }}
+    >
+      <Button onClick={() => setModal(true)} label={label} text></Button>
       {modal && (
-        <Dialog style={style} visible={modal} onHide={() => setModal(false)}>
-          {title && <h2>{title}</h2>}
-          {content && <div>{content}</div>}
+        <Dialog
+          style={style}
+          visible={modal}
+          onHide={() => setModal(false)}
+          position="center"
+        >
+          {title && <>{title}</>}
+          {content && <>{content}</>}
           {children && <>{children}</>}
         </Dialog>
       )}
-    </>
+    </aside>
   );
 };
 

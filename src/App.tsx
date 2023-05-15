@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Header from './components/Common/Header/Header';
 import Detail from './pages/Detail';
 import Item from './pages/Item';
+import User from './pages/User';
 import { RecoilRoot } from 'recoil';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
             <Route path="/Detail" element={<Detail props={MapProps} />} />
           )}
           <Route path="/item" element={<Item />} />
+          <Route path="/User" element={<User />} />
         </Routes>
       </div>
     </RecoilRoot>
