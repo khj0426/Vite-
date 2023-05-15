@@ -1,4 +1,4 @@
-name: Build and Deploy to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -6,45 +6,38 @@ on:
       - main
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Cache Dependencies
+      - name: Cache node modules
         uses: actions/cache@v2
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: ${{ runner.os }}-node-
+          path: node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-npm-
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: npm ci
 
-      - name: Build
+      - name: Set environment variables
+        run: |
+          echo "VITE_API_KEY=${{ secrets.VITE_API_KEY }}" >> $GITHUB_ENV
+          echo "VITE_AUTH_DOMAIN=${{ secrets.VITE_AUTH_DOMAIN }}" >> $GITHUB_ENV
+          echo "VITE_MESSAGE_SENDER_ID=${{ secrets.VITE_MESSAGE_SENDER_ID }}" >> $GITHUB_ENV
+          echo "VITE_PROJECT_ID=${{ secrets.VITE_PROJECT_ID }}" >> $GITHUB_ENV
+          echo "VITE_STORAGE_BUCKET=${{ secrets.VITE_STORAGE_BUCKET }}" >> $GITHUB_ENV
+          echo "VITE_APP_ID=${{ secrets.VITE_APP_ID }}" >> $GITHUB_ENV
+          echo "VITE_MEASUREMENT_ID=${{ secrets.VITE_MEASUREMENT_ID }}" >> $GITHUB_ENV
+
+      - name: Building apps
         run: npm run build
 
-      - name: Set Environment Variables
-        env:
-          VITE_API_KEY: ${{ secrets.VITE_API_KEY }}
-          VITE_AUTH_DOMAIN: ${{ secrets.VITE_AUTH_DOMAIN }}
-          VITE_MESSAGE_SENDER_ID: ${{ secrets.VITE_MESSAGE_SENDER_ID }}
-          VITE_PROJECT_ID: ${{ secrets.VITE_PROJECT_ID }}
-          VITE_STORAGE_BUCKET: ${{ secrets.VITE_STORAGE_BUCKET }}
-          VITE_APP_ID: ${{ secrets.VITE_APP_ID }}
-          VITE_MEASUREMENT_ID: ${{ secrets.VITE_MEASUREMENT_ID }}
-        run: |
-          echo "VITE_API_KEY=${VITE_API_KEY}" >> .env
-          echo "VITE_AUTH_DOMAIN=${VITE_AUTH_DOMAIN}" >> .env
-          echo "VITE_MESSAGE_SENDER_ID=${VITE_MESSAGE_SENDER_ID}" >> .env
-          echo "VITE_PROJECT_ID=${VITE_PROJECT_ID}" >> .env
-          echo "VITE_STORAGE_BUCKET=${VITE_STORAGE_BUCKET}" >> .env
-          echo "VITE_APP_ID=${VITE_APP_ID}" >> .env
-          echo "VITE_MEASUREMENT_ID=${VITE_MEASUREMENT_ID}" >> .env
-
-      - name: Deploy
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          personal_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          publish_dir: ./out
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
