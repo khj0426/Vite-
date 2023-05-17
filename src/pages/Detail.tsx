@@ -8,7 +8,6 @@ import DetailPageCarousel from '../components/Main/DetilPageCarousel';
 const Detail = ({ props }: { props: MapWrapperProps }) => {
   return (
     <>
-      <SelectCategory />
       <PlaceInputText />
       <DetailPageCarousel />
       <MapWrapper props={props} />

@@ -39,21 +39,40 @@ function PlaceInputText() {
   }, []);
 
   return (
-    <div
+    <section
       style={{
-        width: '100%',
         display: 'flex',
+        justifyContent: 'center',
+        gap: '5px',
+        flexWrap: 'wrap',
+        alignItems: 'center',
       }}
     >
-      <TextInput {...inputProps} />
-      <Button
-        onClick={handleButtonClick}
+      <h3
         style={{
-          height: '45px',
+          color: 'white',
+          fontWeight: '700',
+          fontSize: '20px',
         }}
       >
-        <i className="pi pi-search" style={{ color: '#fff' }}></i>
-      </Button>
+        NearBy
+      </h3>
+      <article>
+        <TextInput
+          {...inputProps}
+          style={{
+            width: '300px',
+          }}
+        />
+        <Button
+          onClick={handleButtonClick}
+          style={{
+            height: '45px',
+          }}
+        >
+          <i className="pi pi-search" style={{ color: '#fff' }}></i>
+        </Button>
+      </article>
       {error === kakao.maps.services.Status.ZERO_RESULT && (
         <Messages
           ref={errorMessageRef}
@@ -63,7 +82,7 @@ function PlaceInputText() {
           }}
         />
       )}
-    </div>
+    </section>
   );
 }
 export default PlaceInputText;

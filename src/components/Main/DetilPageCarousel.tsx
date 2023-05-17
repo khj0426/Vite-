@@ -1,6 +1,7 @@
 import CommonCarousel from '../Common/Carousel';
 import type { CarouselProps, responsiveOption } from '../Common/Carousel';
 import styled from 'styled-components';
+import { memo } from 'react';
 
 const DetailPageCarouselImage = styled.img`
   display: inline-flex;
@@ -21,8 +22,7 @@ const DetailPageCarouselImage = styled.img`
 
   @media ${(props) => props.theme.mobile} {
     width: 300px;
-    height: 300px;
-    object-fit: contain;
+    height: auto;
   }
   object-fit: contain;
 `;
@@ -52,4 +52,4 @@ const DetailPageCarousel = () => {
   return <CommonCarousel props={DetailPageCarouselProps} />;
 };
 
-export default DetailPageCarousel;
+export default memo(DetailPageCarousel);
