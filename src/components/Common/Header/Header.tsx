@@ -4,15 +4,14 @@ import 'primeicons/primeicons.css';
 import { Link } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import userState from '../../Atoms/userAtom';
-import LoginModal from '../../Login/LoginModal';
-import { Avatar } from 'primereact/avatar';
-import { Badge } from 'primereact/badge';
+import UserInfo from './UserInfo';
 
 const Container = styled.header`
   border: ${(props) => `1px solid ${props?.theme?.colors?.White}`};
   background-color: ${(props) => `${props.theme.colors.White}`};
   font-family: ${(props) => `${props.theme.fonts[0]}`};
   display: flex;
+  top: 0;
   flex-wrap: wrap;
   width: 100%;
   border: none;
@@ -55,18 +54,11 @@ function Header() {
             display: 'flex',
           }}
         >
-          {user.isLogin === false && <LoginModal />}
-          {user.isLogin && (
-            <>
-              <Badge value={user.displayName} size="large" />
-              <Avatar
-                image={user.photoURL}
-                imageAlt="유저의 프로필 이미지"
-                size="large"
-                shape="circle"
-              />
-            </>
-          )}
+          <UserInfo
+            isLogin={user.isLogin}
+            photoURL={user.photoURL}
+            displayName={user.displayName}
+          />
         </div>
       </Container>
     </Theme>

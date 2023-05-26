@@ -20,9 +20,9 @@ const SelectCategory = () => {
         placeholder="카테고리 선택"
         value={category}
         style={{
-          marginBottom: '5px',
-          width: '200px',
-          position: 'sticky',
+          display: 'flex',
+          margin: '0 auto',
+          width: '300px',
         }}
         filter={true}
       />

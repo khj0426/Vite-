@@ -5,13 +5,13 @@ import LocationIndicator from '../components/Map/LocationIndicator';
 
 const Home = ({ props }: { props: MapWrapperProps }) => {
   return (
-    <div>
+    <>
       <Main />
       <LocationIndicator
         error={props.error}
         resultAddress={props.resultAddress}
       />
-    </div>
+    </>
   );
 };
 

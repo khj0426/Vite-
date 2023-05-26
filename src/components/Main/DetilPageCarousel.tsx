@@ -33,7 +33,7 @@ const DetailPageCarousel = () => {
     numScroll: 1,
     numVisible: 1,
     imgurls: [
-      'https://cdn-mart.baemin.com/inventory-unit/4aa0e74b-1bb5-4b82-a63e-3db7cfe87910.jpg?w=1080',
+      'https://mp-seoul-image-production-s3.mangoplate.com/d8e852bf7058841a7a0694af93af1b9a.jpg?w=1080',
       'https://cdn-mart.baemin.com/inventory-unit/f454861c-e2ae-4dcb-ac02-aea51493a696.jpg?w=1080',
     ],
     itemTemplate: (imgUrl: string) => (

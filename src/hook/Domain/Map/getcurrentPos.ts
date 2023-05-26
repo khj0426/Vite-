@@ -51,17 +51,15 @@ const useCurrentPos = () => {
       const $latitude = currentLocation?.coords?.latitude;
       const $longitude = currentLocation?.coords?.longitude;
 
-      if (!($latitude && $longitude)) {
-        return;
-      }
-
       const $geoCoder = new kakao.maps.services.Geocoder();
-      $geoCoder.coord2Address($longitude, $latitude, (result, status) => {
-        setResultAddress(result);
-        if (status !== kakao.maps.services.Status.OK) {
-          setError(status);
-        }
-      });
+      if ($latitude && $longitude) {
+        $geoCoder.coord2Address($longitude, $latitude, (result, status) => {
+          setResultAddress(result);
+          if (status !== kakao.maps.services.Status.OK) {
+            setError(status);
+          }
+        });
+      }
     };
     getAddressFromCoordinate();
   }, [currentLocation]);

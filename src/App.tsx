@@ -8,6 +8,8 @@ import Detail from './pages/Detail';
 import Item from './pages/Item';
 import User from './pages/User';
 import { RecoilRoot } from 'recoil';
+import ScrolltoTop from './components/Common/ScrolltoTop';
+import { useMemo } from 'react';
 
 function App() {
   const { resultAddress, error, currentLocation } = useCurrentPos();
@@ -22,6 +24,7 @@ function App() {
       <div className="App">
         <GlobalStyle />
         <Header />
+        <ScrolltoTop />
         <Routes>
           <Route path="/" element={<Home props={MapProps} />} />
           {currentLocation && (
