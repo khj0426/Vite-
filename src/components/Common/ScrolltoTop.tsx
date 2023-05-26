@@ -6,7 +6,7 @@ const ScrollTopButtonStyle = styled.div`
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 35px; /* 원하는 높이로 수정 */
+  height: 35px;
   display: flex;
   justify-content: flex-end;
   &:hover {
