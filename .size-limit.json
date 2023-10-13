@@ -1,0 +1,6 @@
+[
+  {
+    "path": "build/assets/index-*.js",
+    "limit": "10 KB"
+  }
+]

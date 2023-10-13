@@ -3,9 +3,8 @@ on:
   pull_request:
     branches:
       - main
-  push:
-    branches:
-      - main
+      - dev
+      - feat/*
 jobs:
   size:
     runs-on: ubuntu-latest
